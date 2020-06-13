@@ -10,7 +10,7 @@ def check_required_info():
         caching = {'linkedin_email':'','linkedin_password':'','courses_links':["",""]}
         with open(required_info_path , 'w') as f:
             f.write(json.dumps(caching))
-        logging.error("please open the required_info.josn and fill in your info ")
+        logging.error("please open the required_info.json and fill in your info ")
         return False
 
 
@@ -21,7 +21,7 @@ def process():
             logging.info("[*] -------------Login-------------")
             USERNAME , PASSWORD = caching['linkedin_email'], caching['linkedin_password']
             if not USERNAME or not PASSWORD :
-                logging.error("[!] please open the required_info.josn and fill in your info ")
+                logging.error("[!] please open the required_info.json and fill in your info ")
             else:
                 with requests.Session() as session:
                     logged_in     =  login(USERNAME , PASSWORD,session)
@@ -31,7 +31,7 @@ def process():
                         fetch_courses(session,caching['courses_links'])
                         logging.info("[*] -------------Done-------------")
                     else:
-                        logging.error("[!] Faild to login ..")
+                        logging.error("[!] Failed to login ..")
 
     except Exception as e:
         logging.error(f"[!] Connection Error: {e}")

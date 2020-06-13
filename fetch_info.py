@@ -129,7 +129,7 @@ def fetch_video(course: Course, chapter: Chapter, video: Video):
 
     logging.info(f"[~] Fetching course '{course.name}' Chapter no. {chapter.index} Video no. {video.index}")
     
-    video_url = f'https://www.linkedin.com/learning-api/detailedCourses?addParagraphsToTranscript=false&courseSlug={course.slug}&q=slugs&resolution=_720&videoSlug={video.slug}'
+    video_url = f'https://www.linkedin.com/learning-api/detailedCourses?addParagraphsToTranscript=false&courseSlug={course.slug}&q=slugs&resolution=_360&videoSlug={video.slug}'
     data = None
     tries = 3
     for _ in range(tries):
@@ -198,4 +198,4 @@ def download_file(url, output):
                 os.remove(output)
                 
     else:
-        logging.info(f'[!!] Error while Downloaind ==> Not a valid URL')
+        logging.info(f'[!!] Error while Downloading ==> Not a valid URL')
